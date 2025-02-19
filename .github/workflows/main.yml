@@ -1,0 +1,23 @@
+name: Hello World Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+      
+      - name: Configurar ambiente
+        run: echo "Iniciando workflow de Hello World!"
+      
+      - name: Executar Hello World
+        run: echo "Hello, World!"
