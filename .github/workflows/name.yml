@@ -1,0 +1,28 @@
+name: Gerador de Nome Aleatório
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  generate-name:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependências
+        run: |
+          pip install random-word
+
+      - name: Executar gerador de nome
+        run: |
+          echo "Nome gerado: $(python -c "from random_word import RandomWords; print(RandomWords().get_random_word())")"
